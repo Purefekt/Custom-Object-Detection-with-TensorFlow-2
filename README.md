@@ -48,5 +48,5 @@ git clone https://github.com/tensorflow/models.git
 ```
 This should clone all the files in a directory called models. After this stay inside C:\TensorFlow and download [this](https://github.com/Purefekt/Custom-Object-Detection-with-TensorFlow-2) repository into a .zip file. Then extract the two files, workspace and scripts, highlighted below directly in to the TensorFlow directory.
 <p align="left">
-  <img src="Assets/Download zip.png" width = 40%>
+  <img src="Assets/Download zip.png" width = 60%>
 </p>
