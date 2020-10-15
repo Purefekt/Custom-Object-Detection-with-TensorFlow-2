@@ -4,5 +4,10 @@ These are the steps i took to train an Object Detection model to detect my face.
 
 ## Softwares needed
 - [Python](https://www.python.org/downloads/windows/) [make sure to enable long paths in the setup]
-
+- [git](https://git-scm.com/downloads)
+- [Anaconda](https://www.anaconda.com/products/individual)
+- [Visual Studio 2019 with C++ Build Tools](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16)
+- [Visual C++ 2015 build tools](https://go.microsoft.com/fwlink/?LinkId=691126)
+- [LabelImg](https://tzutalin.github.io/labelImg/)
+- [7Zip](https://www.7-zip.org/download.html)
 
