@@ -34,3 +34,15 @@ python
 >>> exit()
 ```
 A version number should be displayed.
+
+### Preparing our Workspace
+Create a folder directly in C: and name it "TensorFlow". It can be created anywhere but the commands need to be changed accordingly.
+
+```
+cd C:\TensorFlow
+```
+Clone the [TensorFlow models repository](https://github.com/tensorflow/models) with
+
+```
+git clone https://github.com/tensorflow/models.git
+```
