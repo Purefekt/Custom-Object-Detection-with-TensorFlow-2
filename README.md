@@ -12,8 +12,7 @@ These are the steps i took to train an Object Detection model to detect my face.
 - [7Zip](https://www.7-zip.org/download.html)
 
 ## Installing TensorFlow CPU
-Open the anaconda command prompt
-Create a virtual environment
+Open the anaconda command prompt. Create a virtual environment
 ```
 conda create -n tensorflow pip python=3.8
 ```
