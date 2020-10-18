@@ -1,6 +1,6 @@
 # Custom Object Detection with TensorFlow-2
 
-These are the steps i took to train an Object Detection model to detect my face. I used TensorFlow 2 Object Detection API on Windows 10. I used a virtual machine on Microsoft Azure. My VM was Standard DS2 v2, with 2 virtual CPUs and 7 GB of memory.\n
+These are the steps i took to train an Object Detection model to detect my face. I used TensorFlow 2 Object Detection API on Windows 10. I used a virtual machine on Microsoft Azure. My VM was Standard DS2 v2, with 2 virtual CPUs and 7 GB of memory.
 This reposity acts as a guide for others and also as a reference for myself to look back at.
 
 ## Softwares needed
