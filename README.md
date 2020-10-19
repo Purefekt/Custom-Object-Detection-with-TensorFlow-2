@@ -156,16 +156,10 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 - I made the following changes to the pipeline.config file 
 - Line 3. Change ```num_classes``` to  ```num_classes: 1```
 - Line 135. Change ```batch_size``` according to available memory (Higher values require more memory and vice-versa). I changed it to: ```batch_size: 5```
-- Line 165. Change ```fine_tune_checkpoint``` to:```fine_tune_checkpoint: "pre-trained-models/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8/checkpoint/ckpt-0"```
-- Line 171. Change ```fine_tune_checkpoint_type``` to:
-  - ```fine_tune_checkpoint_type: "detection"```
-- Line 175. Change ```label_map_path``` to:
-  - ```label_map_path: "annotations/label_map.pbtxt"```
-- Line 177. Change ```input_path``` to:
-  - ```input_path: "annotations/train.record"```
-- Line 185. Change ```label_map_path``` to:
-  - ```label_map_path: "annotations/label_map.pbtxt"```
-- Line 189. Change ```input_path``` to:
-  - ```input_path: "annotations/test.record"```
+- Line 165. Change ```fine_tune_checkpoint``` to: ```fine_tune_checkpoint: "pre-trained-models/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8/checkpoint/ckpt-0"```
+- Line 171. Change ```fine_tune_checkpoint_type``` to: ```fine_tune_checkpoint_type: "detection"```
+- Line 175. Change ```label_map_path``` to: ```label_map_path: "annotations/label_map.pbtxt"```
+- Line 177. Change ```input_path``` to: ```input_path: "annotations/train.record"```
+- Line 185. Change ```label_map_path``` to: ```label_map_path: "annotations/label_map.pbtxt"```
+- Line 189. Change ```input_path``` to: ```input_path: "annotations/test.record"```
 
-Once we have made all the necessary changes, that means we are ready for training. So let's move on to the next step!
