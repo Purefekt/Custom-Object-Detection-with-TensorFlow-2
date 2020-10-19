@@ -149,3 +149,23 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\trai
 python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test -l C:\Tensorflow\workspace\training_demo\annotations\label_map.pbtxt -o C:\Tensorflow\workspace\training_demo\annotations\test.record
 ```
 - Now under ```annotations``` there should be a ```test.record``` and ```train.record```.
+
+### Configuring the Training Pipeline
+- I used the CONFIG File from one of the TensorFlow pre-trained models. There are plenty of models in the [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md), but i used the [SSD MobileNet V2 FPNLite 640x640](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz). After downloading i used 7zip to extract the contents and copied it to the ```pre-trained-models``` directory.
+- To store the training pipeline i created a directory called ```my_ssd_mobilenet_v2_fpnlite``` in the ```models``` directory. Then copied the  ```pipeline.config``` from the pre-trained-model.
+- I made the following changes to the pipeline.config file 
+- Line 3. Change ```num_classes``` to  ```num_classes: 1```
+- Line 135. Change ```batch_size``` according to available memory (Higher values require more memory and vice-versa). I changed it to: ```batch_size: 5```
+- Line 165. Change ```fine_tune_checkpoint``` to:```fine_tune_checkpoint: "pre-trained-models/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8/checkpoint/ckpt-0"```
+- Line 171. Change ```fine_tune_checkpoint_type``` to:
+  - ```fine_tune_checkpoint_type: "detection"```
+- Line 175. Change ```label_map_path``` to:
+  - ```label_map_path: "annotations/label_map.pbtxt"```
+- Line 177. Change ```input_path``` to:
+  - ```input_path: "annotations/train.record"```
+- Line 185. Change ```label_map_path``` to:
+  - ```label_map_path: "annotations/label_map.pbtxt"```
+- Line 189. Change ```input_path``` to:
+  - ```input_path: "annotations/test.record"```
+
+Once we have made all the necessary changes, that means we are ready for training. So let's move on to the next step!
