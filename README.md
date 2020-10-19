@@ -117,10 +117,10 @@ OK (skipped=1)
 - ```pre-trained-models```: Here we will store the pre-trained model that we will use as a starting checkpoint for training
 - The rest of the scripts are just used for training and exporting the model.
 
-I clicked 1,400 images of myself (700 with glasses and 700 without glasses), in different outfits and different angles. I used the **name_changer.py** script to change the name of the images in an ordered manner to keep a track of the data.
-Then i used the **downscale_to_720p.py** script to downscale all the 4k images to 720p. This converted all images from roughly 2-3 MB each to just 60-70 KB each.
-Then i used **mirror_image.py** script to get a mirror image of all 1,400 (720p) images. This made my dataset twice as big. Now i had a total of 2,800 images.
-Finally i used the **RandomNames.bat** to rename all images to random names and then used the **name_changer.py** script again on this folder. This renamed the randomised names from 1-2,800.
-After performing these steps i had 2,800; 720p images in a random order with names from 1-2,800. I copied 20% (560) images to the test folder and 80% (2,240) images to the train folder.
+* I clicked 1,400 images of myself (700 with glasses and 700 without glasses), in different outfits and different angles. I used the **name_changer.py** script to change the name of the images in an ordered manner to keep a track of the data.
+* Then i used the **downscale_to_720p.py** script to downscale all the 4k images to 720p. This converted all images from roughly 2-3 MB each to just 60-70 KB each.
+* Then i used **mirror_image.py** script to get a mirror image of all 1,400 (720p) images. This made my dataset twice as big. Now i had a total of 2,800 images.
+* Finally i used the **RandomNames.bat** to rename all images to random names and then used the **name_changer.py** script again on this folder. This renamed the randomised names from 1-2,800.
+* After performing these steps i had 2,800; 720p images in a random order with names from 1-2,800. I copied 20% (560) images to the test folder and 80% (2,240) images to the train folder.
 
 
