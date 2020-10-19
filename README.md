@@ -123,3 +123,6 @@ OK (skipped=1)
 * Finally i used the **RandomNames.bat** to rename all images to random names and then used the **name_changer.py** script again on this folder. This renamed the randomised names from 1-2,800.
 * After performing these steps i had 2,800; 720p images in a random order with names from 1-2,800. I copied 20% (560) images to the test folder and 80% (2,240) images to the train folder.
 * To label the dataset i used LabelImg directly on the test and train images and labeled each image.
+<p align="left">
+  <img src="Assets/label.png" width = 60%>
+</p>
