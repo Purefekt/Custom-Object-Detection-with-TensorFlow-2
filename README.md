@@ -134,3 +134,18 @@ item {
     name: 'Veer'
 }
 ```
+- Now i generated the RECORD files for training.
+```
+pip install pandas
+```
+Navigate to the scripts\preprocessing directory 
+```
+cd C:\TensorFlow\scripts\preprocessing
+```
+Running these 2 commands will generate the RECORD files.
+```
+python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\train -l C:\Tensorflow\workspace\training_demo\annotations\label_map.pbtxt -o C:\Tensorflow\workspace\training_demo\annotations\train.record
+
+python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test -l C:\Tensorflow\workspace\training_demo\annotations\label_map.pbtxt -o C:\Tensorflow\workspace\training_demo\annotations\test.record
+```
+- Now under ```annotations``` there should be a ```test.record``` and ```train.record```.
