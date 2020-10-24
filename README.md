@@ -177,5 +177,24 @@ INFO:tensorflow:Step 100 per-step time 16.640s loss=0.454
 I0810 11:56:12.520163 11172 model_lib_v2.py:644] Step 100 per-step time 16.640s loss=0.454
 ```
 I ran the model for ~20,700 steps, which took around 95 hours. Since i could only get the cpu only VM i was not able to take advantage of TensorFlow GPU which would've brought my training time significantly down. I was trying to get a loss below 0.150, as this prevents underfitting and overfitting. Tensorflow logs the loss every 100 steps and Ctrl+C can be used to pause the training.
+<p align="left">
+  <img src="Assets/steps.png" width = 60%>
+</p>
 
+### Monitoring Training with TensorBoard
+I used TensorFlow's Tensorboard to monitor the training. It is a very powerful tool which lets the user monitor training and visualize training metrics.
+To start TensorBoard, open a new anaconda terminal
+
+```
+conda activate tensorflow
+cd C:\TensorFlow\workspace\training_demo
+tensorboard --logdir=models\my_ssd_mobilenet_v2_fpnlite
+```
+Output:
+ 
+```
+Serving TensorBoard on localhost; to expose to the network, use a proxy or pass --bind_all
+TensorBoard 2.2.2 at http://localhost:6006/ (Press CTRL+C to quit)
+```
+http://localhost:6006/ in the browser will open TensorBoard.
 
