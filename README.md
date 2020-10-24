@@ -1,9 +1,8 @@
 # Custom Object Detection with TensorFlow-2
 
-These are the steps i took to train an Object Detection model to detect my face. I used TensorFlow 2 Object Detection API on Windows 10. I used a virtual machine on Microsoft Azure. My VM was Standard DS2 v2, with 2 virtual CPUs and 7 GB of memory.
-This reposity acts as a guide for others and also as a reference for myself to look back at.
+These are the steps I took to train an Object Detection model to detect my face. I used TensorFlow 2 Object Detection API on Windows 10. I used a virtual machine on Microsoft Azure. My VM was Standard DS2 v2, with 2 virtual CPUs and 7 GB of memory. This repository acts as a guide for others and also as a reference for myself to look back at.
 
-In this project i will use the SSD MobileNet V2 FPNLite 640x640 pretrained model as it runs on low power devices like the raspberry pi and doesnt have too much of an accuracy hit. Others models with higher accuracy are better for projects where we use more powerful hardware, since i want to port this model to a raspberry pi 4, i stuck with this model. [Other models](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)
+In this project I will use the SSD MobileNet V2 FPNLite 640x640 pretrained model as it runs on low power devices like the raspberry pi and does not have too much of an accuracy hit. Others models with higher accuracy are better for projects where we use more powerful hardware, since I want to port this model to a raspberry pi 4, I stuck with this model. [Other models](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)
 
 ## Softwares needed
 - [Python](https://www.python.org/downloads/windows/) [enable long paths in the setup]
@@ -110,31 +109,31 @@ OK (skipped=1)
 ```
 
 ### Gathering and Labeling the Dataset
-- ```annotations```: This is where we will store all our training data needed for our model. The CSV and RECORD files needed for the training pipeline. There is also a PBTXT File with the labels for my custom model.
+- ```annotations```: This is where we will store all our training data needed for our model, he CSV and RECORD files needed for the training pipeline. There is also a PBTXT File with the labels for my custom model.
 - ```exported-models```: This is the folder where the exported inference graph is stored.
 - ```images```: This folder consists of a test and train folder. Here the dataset images are stored with their label files (XML format).
 - ```models```: In this folder we will store our training pipeline and checkpoint information from the training job as well as the CONFIG file needed for training.
 - ```pre-trained-models```: Here we will store the pre-trained model that we will use as a starting checkpoint for training
 - The rest of the scripts are just used for training and exporting the model.
 - I clicked 1,400 images of myself (700 with glasses and 700 without glasses), in different outfits and different angles. I used the **name_changer.py** script to change the name of the images in an ordered manner to keep a track of the data.
-- Then i used the **downscale_to_720p.py** script to downscale all the 4k images to 720p. This converted all images from roughly 2-3 MB each to just 60-70 KB each.
-- Then i used **mirror_image.py** script to get a mirror image of all 1,400 (720p) images. This made my dataset twice as big. Now i had a total of 2,800 images.
-- Finally i used the **RandomNames.bat** to rename all images to random names and then used the **name_changer.py** script again on this folder. This renamed the randomised names from 1-2,800.
-- After performing these steps i had 2,800; 720p images in a random order with names from 1-2,800. I copied 20% (560) images to the test folder and 80% (2,240) images to the train folder.
-- To label the dataset i used LabelImg directly on the test and train images and labeled each image.
+- Then I used the **downscale_to_720p.py** script to downscale all the 4k images to 720p. This converted all images from roughly 2-3 MB each to just 60-70 KB each.
+- Then I used **mirror_image.py** script to get a mirror image of all 1,400 (720p) images. This made my dataset twice as big. Now I had a total of 2,800 images.
+- Finally I used the **RandomNames.bat** to rename all images to random names and then used the **name_changer.py** script again on this folder. This renamed the randomised names from 1-2,800.
+- After performing these steps I had 2,800; 720p images in a random order with names from 1-2,800. I copied 20% (560) images to the test folder and 80% (2,240) images to the train folder.
+- To label the dataset I used LabelImg directly on the test and train images and labeled each image.
 <p align="left">
   <img src="Assets/label.png" width = 60%>
 </p>
 
 ### Generating Training Data
-- Now that the images and XML files are ready, i created the label_map. It is located in **workspace/training_demo/annotations/**. Since this model only detects my face, the number of classes is just one, thus it looks like this.
+- Now that the images and XML files are ready, I created the label_map. It is located in **workspace/training_demo/annotations/**. Since this model only detects my face, the number of classes is just one, thus it looks like this.
 ```
 item {
     id: 1
     name: 'Veer'
 }
 ```
-- Now i generated the RECORD files for training.
+- Now I generated the RECORD files for training.
 ```
 pip install pandas
 ```
@@ -151,8 +150,8 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 - Now under ```annotations``` there should be a ```test.record``` and ```train.record```.
 
 ### Configuring the Training Pipeline
-- I used the CONFIG File from one of the TensorFlow pre-trained models. There are plenty of models in the [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md), but i used the [SSD MobileNet V2 FPNLite 640x640](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz). After downloading i used 7zip to extract the contents and copied it to the ```pre-trained-models``` directory.
-- To store the training pipeline i created a directory called ```my_ssd_mobilenet_v2_fpnlite``` in the ```models``` directory. Then copied the  ```pipeline.config``` from the pre-trained-model.
+- I used the CONFIG File from one of the TensorFlow pre-trained models. There are plenty of models in the [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md), but I used the [SSD MobileNet V2 FPNLite 640x640](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz). After downloading I used 7zip to extract the contents and copied it to the ```pre-trained-models``` directory.
+- To store the training pipeline I created a directory called ```my_ssd_mobilenet_v2_fpnlite``` in the ```models``` directory. Then copied the  ```pipeline.config``` from the pre-trained-model.
 - I made the following changes to the pipeline.config file 
 - Line 3. Change ```num_classes``` to  ```num_classes: 1```
 - Line 135. Change ```batch_size``` according to available memory (Higher values require more memory and vice-versa). I changed it to: ```batch_size: 5```
@@ -164,7 +163,7 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 - Line 189. Change ```input_path``` to: ```input_path: "annotations/test.record"```
 
 ### Training the Model
-Finally i was ready to start the training process. After opening a new anaconda terminal
+Finally I was ready to start the training process. After opening a new anaconda terminal
 ```
 conda activate tensorflow
 cd C:\TensorFlow\workspace\training_demo
@@ -177,7 +176,7 @@ After a few warnings, there should be the first 100 step summary
 INFO:tensorflow:Step 100 per-step time 16.640s loss=0.454
 I0810 11:56:12.520163 11172 model_lib_v2.py:644] Step 100 per-step time 16.640s loss=0.454
 ```
-I ran the model for ~20,700 steps, which took around 95 hours. Since i could only get the cpu only VM i was not able to take advantage of TensorFlow GPU which would've brought my training time significantly down. I was trying to get a loss below 0.150, as this prevents underfitting and overfitting. Tensorflow logs the loss every 100 steps and Ctrl+C can be used to pause the training.
+I ran the model for ~20,700 steps, which took around 95 hours. Since I could only get the cpu only VM I was not able to take advantage of TensorFlow GPU which would've brought my training time significantly down. I was trying to get a loss below 0.150, as this prevents underfitting and overfitting. Tensorflow logs the loss every 100 steps and Ctrl+C can be used to pause the training.
 <p align="left">
   <img src="Assets/steps.png" width = 60%>
 </p>
@@ -201,10 +200,10 @@ http://localhost:6006/ in the browser will open TensorBoard.
 <p align="left">
   <img src="Assets/graph.png" width = 60%>
 </p>
-We can see that the total loss is decreasing over time, but it starts to plateau, after this point there wont be much increase in accuracy and we will start getting diminishing returns, thus stopping at this point is a good idea.
+We can see that the total loss is decreasing over time, but it starts to plateau, after this point there won't be much increase in accuracy and we will start getting diminishing returns, thus stopping at this point is a good idea.
 
 ### Exporting the Inference Graph
-To export the saved model i performed the following steps
+To export the saved model I performed the following steps
 ```
 conda activate tensorflow
 cd C:\TensorFlow\workspace\training_demo
