@@ -163,3 +163,19 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 - Line 185. Change ```label_map_path``` to: ```label_map_path: "annotations/label_map.pbtxt"```
 - Line 189. Change ```input_path``` to: ```input_path: "annotations/test.record"```
 
+### Training the Model
+Finally i was ready to start the training process. After opening a new anaconda terminal
+```
+cd C:\TensorFlow\workspace\training_demo
+```
+```
+python model_main_tf2.py --model_dir=models\my_ssd_mobilenet_v2_fpnlite --pipeline_config_path=models\my_ssd_mobilenet_v2_fpnlite\pipeline.config
+```
+After a few warnings, there should be the first 100 step summary
+```
+INFO:tensorflow:Step 100 per-step time 16.640s loss=0.454
+I0810 11:56:12.520163 11172 model_lib_v2.py:644] Step 100 per-step time 16.640s loss=0.454
+```
+I ran the model for ~20,700 steps, which took around 95 hours. Since i could only get the cpu only VM i was not able to take advantage of TensorFlow GPU which would've brought my training time significantly down. I was trying to get a loss below 0.150, as this prevents underfitting and overfitting. Tensorflow logs the loss every 100 steps and Ctrl+C can be used to pause the training.
+
+
