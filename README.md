@@ -166,6 +166,7 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 ### Training the Model
 Finally i was ready to start the training process. After opening a new anaconda terminal
 ```
+conda activate tensorflow
 cd C:\TensorFlow\workspace\training_demo
 ```
 ```
@@ -197,4 +198,55 @@ Serving TensorBoard on localhost; to expose to the network, use a proxy or pass 
 TensorBoard 2.2.2 at http://localhost:6006/ (Press CTRL+C to quit)
 ```
 http://localhost:6006/ in the browser will open TensorBoard.
+<p align="left">
+  <img src="Assets/graph.png" width = 60%>
+</p>
+We can see that the total loss is decreasing over time, but it starts to plateau, after this point there wont be much increase in accuracy and we will start getting diminishing returns, thus stopping at this point is a good idea.
 
+### Exporting the Inference Graph
+To export the saved model i performed the following steps
+```
+conda activate tensorflow
+cd C:\TensorFlow\workspace\training_demo
+```
+```
+python .\exporter_main_v2.py --input_type image_tensor --pipeline_config_path .\models\my_ssd_mobilenet_v2_fpnlite\pipeline.config --trained_checkpoint_dir .\models\my_ssd_mobilenet_v2_fpnlite\ --output_directory .\exported-models\my_mobilenet_model
+```
+The finished model is stored in ```C:\TensorFlow\workspace\training_demo\exported-models\my_mobilenet_model\saved_model``` folder. There is a PB File called ```saved_model.pb```. This is the inference graph! I also prefer to copy the ```label_map.pbtxt``` file in to this directory because it makes things a bit easier for testing. The label_map.pbtxt file is located in ```C:\TensorFlow\workspace\training_demo\annotations\label_map.pbtxt```.
+
+### Testing out the Finished Model
+
+There are several scripts which can be used to detect the model in different ways.
+- ```TF-image-od.py```: This program uses the viz_utils module to visualize labels and bounding boxes. It performs object detection on a single image, and displays it with a cv2 window.
+- ```TF-image-object-counting.py```: This program also performs inference on a single image. I have added my own labelling method with OpenCV which I prefer. It also counts the number of detections and displays it in the top left corner. The final image is, again, displayed with a cv2 window.
+- ```TF-video-od.py```: This program is similar to the ```TF-image-od.py```. However, it performs inference on each individual frame of a video and displays it via cv2 window.
+- ```TF-video-object-counting.py```: This program is similar to ```TF-image-object-counting.py``` and has a similar labelling method with OpenCV. Takes a video for input, and also performs object detection on each frame, displaying the detection count in the top left corner.
+- ```TF-webcam-opencv.py```: This program opens the webcam and detects the object in real time. Pressing Q will quit the webcam window.
+
+The usage of each program looks like 
+
+```
+usage: TF-image-od.py [-h] [--model MODEL] [--labels LABELS] [--image IMAGE] [--threshold THRESHOLD]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --model MODEL         Folder that the Saved Model is Located In
+  --labels LABELS       Where the Labelmap is Located
+  --image IMAGE         Name of the single image to perform detection on
+  --threshold THRESHOLD Minimum confidence threshold for displaying detected objects
+```
+Need to install opencv-python
+```
+pip install opencv-python
+```
+To test the model
+```
+conda activate tensorflow
+cd C:\TensorFlow\workspace\training_demo
+```
+
+Then to run the script, just use
+
+```
+python TF-webcam-opencv.py
+``` 
