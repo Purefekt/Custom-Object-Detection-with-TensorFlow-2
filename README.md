@@ -250,4 +250,4 @@ Then to run the script, just use
 ```
 python TF-webcam-opencv.py
 ``` 
-[![Link to my YouTube video!](https://raw.githubusercontent.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10/master/doc/YouTube%20video.jpg)](https://www.youtube.com/watch?v=Rgpfk6eYxJA)
+[![Link to my YouTube video!](https://github.com/Purefekt/Custom-Object-Detection-with-TensorFlow-2/blob/main/Assets/video%20thumbnail.png)](https://www.youtube.com/watch?v=qMKbi_v2R_Y)
