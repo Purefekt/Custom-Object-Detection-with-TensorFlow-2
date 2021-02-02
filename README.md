@@ -114,7 +114,7 @@ OK (skipped=1)
 ```
 
 ### Gathering and Labeling the Dataset
-- ```annotations```: This is where we will store all our training data needed for our model, he CSV and RECORD files needed for the training pipeline. There is also a PBTXT File with the labels for my custom model.
+- ```annotations```: This is where we will store all our training data needed for our model, the CSV and RECORD files needed for the training pipeline. There is also a PBTXT File with the labels for my custom model.
 - ```exported-models```: This is the folder where the exported inference graph is stored.
 - ```images```: This folder consists of a test and train folder. Here the dataset images are stored with their label files (XML format).
 - ```models```: In this folder we will store our training pipeline and checkpoint information from the training job as well as the CONFIG file needed for training.
