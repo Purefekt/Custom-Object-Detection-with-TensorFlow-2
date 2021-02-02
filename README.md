@@ -131,7 +131,7 @@ OK (skipped=1)
 </p>
 
 ### Generating Training Data
-- Now that the images and XML files are ready, I created the label_map. It is located in **workspace/training_demo/annotations/**. Since this model only detects my face, the number of classes is just one, thus it looks like this.
+- Now that the images and XML files are ready, I created the label_map. It is located in **Tensorflow/workspace/training_demo/annotations/**. Since this model only detects my face, the number of classes is just one, thus it looks like this.
 ```
 item {
     id: 1
