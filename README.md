@@ -38,7 +38,7 @@ python
 ```
 A version number should be displayed.
 
-### Preparing the Workspace
+## Preparing the Workspace
 Create a folder directly in C: and name it "TensorFlow". It can be created anywhere but the commands need to be changed accordingly.
 
 ```
@@ -113,7 +113,7 @@ Ran 20 tests in 45.304s
 OK (skipped=1)
 ```
 
-### Gathering and Labeling the Dataset [Inside Tensorflow/workspace/training_demo]
+## Gathering and Labeling the Dataset [Inside Tensorflow/workspace/training_demo]
 - ```annotations```: This is where we will store all our training data needed for our model, the CSV and RECORD files needed for the training pipeline. There is also a PBTXT File with the labels for my custom model.
 - ```exported-models```: This is the folder where the exported inference graph is stored.
 - ```images```: This folder consists of a test and train folder. Here the dataset images are stored with their label files (XML format).
@@ -130,7 +130,7 @@ OK (skipped=1)
   <img src="Assets/label.png" width = 60%>
 </p>
 
-### Generating Training Data
+## Generating Training Data
 - Now that the images and XML files are ready, I created the label_map. It is located in **Tensorflow/workspace/training_demo/annotations/**. Since this model only detects my face, the number of classes is just one, thus it looks like this.
 ```
 item {
@@ -154,7 +154,7 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 ```
 - Now under **Tensorflow/workspace/training_demo/annotations/** there should be a ```test.record``` and ```train.record```.
 
-### Configuring the Training Pipeline
+## Configuring the Training Pipeline
 - I used the CONFIG File from one of the TensorFlow pre-trained models. There are plenty of models in the [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md), but I used the [SSD MobileNet V2 FPNLite 640x640](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz)[if download does not start after clicking on link, try right click -> open in a new tab]. After downloading I used 7zip to extract the contents and copied it to the **Tensorflow/workspace/training_demo/pre-trained-models** directory [make sure to copy the entire folder directly into the pre-trained models folder, dont copy the 3 files inside the extracted file individually]
 - To store the training pipeline I created a directory called ```my_ssd_mobilenet_v2_fpnlite``` in the **Tensorflow/workspace/training_demo/models** directory. Then copied the  ```pipeline.config``` from the **Tensorflow/workspace/training_demo/pre-trained-models**.
 - I made the following changes to the pipeline.config file 
@@ -167,7 +167,7 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 - Line 185. Change ```label_map_path``` to: ```label_map_path: "annotations/label_map.pbtxt"```
 - Line 189. Change ```input_path``` to: ```input_path: "annotations/test.record"```
 
-### Training the Model
+## Training the Model
 Finally I was ready to start the training process. After opening a new anaconda terminal
 ```
 conda activate tensorflow
@@ -186,7 +186,7 @@ I ran the model for ~20,700 steps, which took around 95 hours. Since I could onl
   <img src="Assets/steps.png" width = 60%>
 </p>
 
-### Monitoring Training with TensorBoard
+## Monitoring Training with TensorBoard
 I used TensorFlow's Tensorboard to monitor the training. It is a very powerful tool which lets the user monitor training and visualize training metrics.
 To start TensorBoard, open a new anaconda terminal
 
@@ -207,7 +207,7 @@ http://localhost:6006/ in the browser will open TensorBoard.
 </p>
 We can see that the total loss is decreasing over time, but it starts to plateau, after this point there won't be much increase in accuracy and we will start getting diminishing returns, thus stopping at this point is a good idea.
 
-### Exporting the Inference Graph
+## Exporting the Inference Graph
 To export the saved model I performed the following steps
 ```
 conda activate tensorflow
@@ -218,7 +218,7 @@ python .\exporter_main_v2.py --input_type image_tensor --pipeline_config_path .\
 ```
 The finished model is stored in ```C:\TensorFlow\workspace\training_demo\exported-models\my_mobilenet_model\saved_model``` folder. There is a PB File called ```saved_model.pb```. This is the inference graph! I also prefer to copy the ```label_map.pbtxt``` file in to this directory because it makes things a bit easier for testing. The label_map.pbtxt file is located in ```C:\TensorFlow\workspace\training_demo\annotations\label_map.pbtxt```.
 
-### Testing out the Finished Model
+## Testing out the Finished Model
 
 There are several scripts which can be used to detect the model in different ways.
 - ```TF-image-od.py```: This program uses the viz_utils module to visualize labels and bounding boxes. It performs object detection on a single image, and displays it with a cv2 window.
