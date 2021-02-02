@@ -24,7 +24,7 @@ Then activate the environment with
 ```
 conda activate tensorflow
 ```
-**NOTE: The virtual environment has to be activated each time the anaconda terminal is closed.**  
+**NOTE: The virtual environment has to be activated each time the anaconda terminal is closed.**    
 Installing TensorFlow CPU
 ```
 pip install tensorflow
