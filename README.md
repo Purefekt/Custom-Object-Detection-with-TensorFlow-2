@@ -155,7 +155,7 @@ python generate_tfrecord.py -x C:\Tensorflow\workspace\training_demo\images\test
 - Now under **Tensorflow/workspace/training_demo/annotations/** there should be a ```test.record``` and ```train.record```.
 
 ### Configuring the Training Pipeline
-- I used the CONFIG File from one of the TensorFlow pre-trained models. There are plenty of models in the [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md), but I used the [SSD MobileNet V2 FPNLite 640x640](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz). After downloading I used 7zip to extract the contents and copied it to the ```pre-trained-models``` directory.
+- I used the CONFIG File from one of the TensorFlow pre-trained models. There are plenty of models in the [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md), but I used the [SSD MobileNet V2 FPNLite 640x640](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8.tar.gz)[if download does not start after clicking on link, try right click -> open in a new tab]. After downloading I used 7zip to extract the contents and copied it to the ```pre-trained-models``` directory.
 - To store the training pipeline I created a directory called ```my_ssd_mobilenet_v2_fpnlite``` in the ```models``` directory. Then copied the  ```pipeline.config``` from the pre-trained-model.
 - I made the following changes to the pipeline.config file 
 - Line 3. Change ```num_classes``` to  ```num_classes: 1```
