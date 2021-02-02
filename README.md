@@ -70,14 +70,18 @@ Close the terminal and open a new Anaconda prompt. Use the following command to 
 conda activate tensorflow
 ```
 ```
-pip install cython
 pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI
+```
+```
+pip install cython
 ```
 ```
 cd C:\TensorFlow\models\research
 ```
 ```
 copy object_detection\packages\tf2\setup.py .
+```
+```
 python -m pip install .
 ```
 If there are no errors, run this command
