@@ -12,6 +12,7 @@ In this project I will use the SSD MobileNet V2 FPNLite 640x640 pretrained model
 - [Visual C++ 2015 build tools](https://go.microsoft.com/fwlink/?LinkId=691126)
 - [LabelImg](https://tzutalin.github.io/labelImg/)
 - [7Zip](https://www.7-zip.org/download.html)
+- [Notepad++](https://notepad-plus-plus.org/downloads/){optional personal preference}
 
 ## Installing TensorFlow CPU
 Open the anaconda command prompt. Create a virtual environment
