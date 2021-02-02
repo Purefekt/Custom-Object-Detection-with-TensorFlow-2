@@ -8,7 +8,7 @@ In this project I will use the SSD MobileNet V2 FPNLite 640x640 pretrained model
 - [Python](https://www.python.org/downloads/windows/) [enable long paths in the setup]
 - [git](https://git-scm.com/downloads)
 - [Anaconda](https://www.anaconda.com/products/individual) [set this as PATH in the setup]
-- [Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16)
+- [Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=16){Intall without any packages}
 - [Visual C++ 2015 build tools](https://go.microsoft.com/fwlink/?LinkId=691126)
 - [LabelImg](https://tzutalin.github.io/labelImg/)
 - [7Zip](https://www.7-zip.org/download.html)
