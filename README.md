@@ -113,7 +113,7 @@ Ran 20 tests in 45.304s
 OK (skipped=1)
 ```
 
-### Gathering and Labeling the Dataset
+### Gathering and Labeling the Dataset [Inside Tensorflow/workspace/training_demo]
 - ```annotations```: This is where we will store all our training data needed for our model, the CSV and RECORD files needed for the training pipeline. There is also a PBTXT File with the labels for my custom model.
 - ```exported-models```: This is the folder where the exported inference graph is stored.
 - ```images```: This folder consists of a test and train folder. Here the dataset images are stored with their label files (XML format).
