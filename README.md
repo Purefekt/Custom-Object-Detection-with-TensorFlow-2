@@ -186,6 +186,8 @@ I ran the model for ~20,700 steps, which took around 95 hours. Since I could onl
   <img src="Assets/steps.png" width = 60%>
 </p>
 
+**Note:** The testing can be paused by simply pressing ctrl+C and then keeping the files intact and simply restarting the testing from the anaconda terminal. But once the inference graph is exported the testing cannot be resumed. Make sure to keep a copy of the entire "Tesnorflow" folder before exporting the inference graph to resume the testing if necessary or to convert model to TensorFlowLite.
+
 ## Monitoring Training with TensorBoard
 I used TensorFlow's Tensorboard to monitor the training. It is a very powerful tool which lets the user monitor training and visualize training metrics.
 To start TensorBoard, open a new anaconda terminal
